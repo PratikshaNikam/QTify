@@ -59,12 +59,12 @@ function Search({ searchData, placeholder }) {
   // };
 
   return (
-    <div style={{ position: "relative" }}>
+    // <div style={{ position: "relative" }}>
       <form
         className={styles.wrapper}
         
       >
-        <div >
+        
           <input
             name="album"
             className={styles.search}
@@ -72,15 +72,15 @@ function Search({ searchData, placeholder }) {
             required
            
           />
-        </div>
-        <div>
+        
+        
           <button className={styles.searchButton} type="submit">
             <SearchIcon />
           </button>
-        </div>
+        
       </form>
       
-    </div>
+    // </div>
   );
 }
 
