@@ -1,15 +1,15 @@
 import React,{useEffect,useState} from "react";
 import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
-import Cards from "./components/Cards/Cards";
-import HomePage from "./pages/HomePage/HomePage";
+// import Hero from "./components/Hero/Hero";
+// import Cards from "./components/Cards/Cards";
+// import HomePage from "./pages/HomePage/HomePage";
 import StyledEngineProvider from "@mui/material/StyledEngineProvider";
 import { Outlet } from "react-router-dom";
-import {fetchFilters,fetchNewAlbums,fetchSongs,fectTopAlbums}from "./api/api"
+import {fetchFilters,fetchNewAlbums,fetchSongs,fetchTopAlbums}from "./api/api"
 
 
 function App() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
 
   const generateData = (key, source) => {
     source().then((data) => {
@@ -24,7 +24,7 @@ function App() {
     generateData("genres", fetchFilters);
     generateData("newAlbums", fetchNewAlbums);
     generateData("songs", fetchSongs);
-    generateData("topAlbums", fectTopAlbums);
+    generateData("topAlbums", fetchTopAlbums);
   }, []);
 
   const { topAlbums = [], newAlbums = [], songs = [], genres = [] } = data;
