@@ -7,9 +7,12 @@ import { fetchFilters } from "../../api/api";
 
 export default function HomePage() {
   const { data } = useOutletContext();
-  const {topAlbums, newAlbums, songs,genres} = data;
+  const { newAlbums,topAlbums,  songs, genres } = data;
+ 
   return (
+  
     <>
+      {/* {console.log(data)} ; */}
       <Hero />
       <div className={styles.wrapper}>
         <Section title="Top Albums" data={topAlbums} type="album" />

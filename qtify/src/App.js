@@ -30,7 +30,10 @@ function App() {
   const { topAlbums = [], newAlbums = [], songs = [], genres = [] } = data;
 
   return (
- <>
+    
+    <>
+      { console.log(data) }
+      
       <StyledEngineProvider injectFirst>
         <Navbar searchData={[...topAlbums, ...newAlbums]}></Navbar>
         <Outlet context={{data:{topAlbums,newAlbums,songs,genres}}} />
