@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import Card from "../Cards/Card"
 import Carousel from "../Carausel/Carausel"
-import Filters from "../Filters/Filters";
+import Filters from "../Filters/Filters"
 import styles from "./Section.module.css";
 
 export default function Section({ title, data, filterSource, type }) {
