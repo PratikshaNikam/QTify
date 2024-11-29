@@ -1,10 +1,8 @@
 import React from "react";
-import styles from "./AlbumPage.module.css";
+import { useParams } from "react-router-dom";
 
 export default function AlbumPage() {
-  return (
-    <div>
-      <p>Album Page</p>
-    </div>
-  )
+  const { albumId } = useParams();
+
+  return <>{albumId}</>;
 }

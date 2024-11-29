@@ -1,45 +1,54 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
+import Hero from "./components/Hero/Hero";
+import HomePage from "./pages/HomePage/HomePage";
 import Navbar from "./components/Navbar/Navbar";
-// import Hero from "./components/Hero/Hero";
-// import Cards from "./components/Cards/Cards";
-// import HomePage from "./pages/HomePage/HomePage";
 import StyledEngineProvider from "@mui/material/StyledEngineProvider";
 import { Outlet } from "react-router-dom";
-import {fetchFilters,fetchNewAlbums,fetchSongs,fetchTopAlbums}from "./api/api"
-
+import {
+  fetchFilters,
+  fetchNewAlbums,
+  fetchSongs,
+  fetchTopAlbums,
+} from "./api/api";
 
 function App() {
   const [data, setData] = useState({});
 
+  // const r = {
+  //   topAlbums: [{}, {}, {}, {}],
+  //    newAlbums: [{}, {}, {}, {}],
+  //    genres: ['rock', 'pop', 'jazz'],
+  //    songs: []
+  // };
+
   const generateData = (key, source) => {
     source().then((data) => {
       setData((prevState) => {
+        // Object.assign would also work
         return { ...prevState, [key]: data };
-      })
-    })
-    
+      });
+    });
   };
 
   useEffect(() => {
-    generateData("genres", fetchFilters);
+    generateData("topAlbums", fetchTopAlbums);
     generateData("newAlbums", fetchNewAlbums);
     generateData("songs", fetchSongs);
-    generateData("topAlbums", fetchTopAlbums);
+    generateData("genres", fetchFilters);
   }, []);
 
   const { topAlbums = [], newAlbums = [], songs = [], genres = [] } = data;
 
   return (
-    
     <>
-      { console.log(data) }
-      
       <StyledEngineProvider injectFirst>
-        <Navbar searchData={[...topAlbums, ...newAlbums]}></Navbar>
-        <Outlet context={{data:{topAlbums,newAlbums,songs,genres}}} />
-        </StyledEngineProvider>
+        <Navbar searchData={[...topAlbums, ...newAlbums]} />
+        <Outlet context={{ data: { topAlbums, newAlbums, songs, genres } }} />
+      </StyledEngineProvider>
     </>
   );
 }
+
+
 
 export default App;

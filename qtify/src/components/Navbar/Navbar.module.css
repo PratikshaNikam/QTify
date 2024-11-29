@@ -1,24 +1,9 @@
 .navbar {
-  background-color: #34c94b;
-  height: 75px;
+  background-color: var(--color-primary);
+  height: 74px;
   width: 100vw;
   padding: 0px 32px;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
-
-.button{
-  width:170px;
-  height:47px;
-  background-color: #121212;
-  border-radius: 12px;
-  color:#34c94b;
-  cursor: pointer;
-  font-family: Poppins, sans-serif;
-  font-size: medium;
-  margin: 14px;
-  padding: 10px 16px;
-}
-

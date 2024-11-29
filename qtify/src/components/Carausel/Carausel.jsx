@@ -1,12 +1,11 @@
-import React, { useEffect, useRef } from 'react';
-import styles from "./carausel.module.css";
+import React, { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
-import "swiper/css";
 import { useSwiper } from "swiper/react";
-import  CarauselLeftNavigation from "./CarauselLeftNavigation/CarauselLeftNavigation";
-import CarauselRightNavigation from "./CarauselRightNavigation/CarauselRightNavigation";
-
+import styles from "./Carousel.module.css";
+import "swiper/css";
+import CarouselLeftNavigation from "./CarouselLeftNavigation/CarouselLeftNavigation";
+import CarouselRightNavigation from "./CarouselRightNavigation/CarauselRightNavigation";
 
 const Controls = ({ data }) => {
   const swiper = useSwiper();
@@ -14,15 +13,15 @@ const Controls = ({ data }) => {
   useEffect(() => {
     swiper.slideTo(0);
   }, [data]);
-  
-  return <></>
-}
 
-function Carausel({ data, renderComponent }) {
+  return <></>;
+};
+
+function Carousel({ data, renderComponent }) {
   return (
     <div className={styles.wrapper}>
       <Swiper
-        style={{ padding: "0px  20px" }}
+        style={{ padding: "0px 20px" }}
         initialSlide={0}
         modules={[Navigation]}
         slidesPerView={"auto"}
@@ -31,18 +30,15 @@ function Carausel({ data, renderComponent }) {
       >
         <Controls data={data} />
         <div>
-          <CarauselLeftNavigation />
-          <CarauselRightNavigation />
+          <CarouselLeftNavigation />
+          <CarouselRightNavigation />
         </div>
         {data.map((ele) => (
-          <SwiperSlide >
-            {renderComponent(ele)}
-          </SwiperSlide>
+          <SwiperSlide>{renderComponent(ele)}</SwiperSlide>
         ))}
-
       </Swiper>
-   </div>
- )
-
+    </div>
+  );
 }
-export default Carausel;
+
+export default Carousel;

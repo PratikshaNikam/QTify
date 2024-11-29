@@ -1,10 +1,10 @@
 import styles from "./Button.module.css";
 import React from "react";
-function Button() {
+function Button({children}) {
   return (
-    <div>
-      <button className={styles.feedbackButton} ></button>
-    </div>
+   
+      <button className={styles.feedbackButton} >{children}</button>
+    
   )
 }
 
